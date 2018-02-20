@@ -31,7 +31,8 @@ switch ($hostAlias) {
 switch ($command) {
    "PowerOn" { 
       try {
-         Add-PSSnapin VMware.VimAutomation.Core
+         #Add-PSSnapin VMware.VimAutomation.Coreç
+         #Import-Module VMware.PowerCLI
          (Connect-VIServer -server $vCenterAddress -User $vSphereUsername -Password $vSpherePassword) | Out-Null
          ($vm = Get-VM -Name $vmName) | Out-Null
          If ($vm.PowerState -ne "PoweredOn") {
@@ -40,13 +41,14 @@ switch ($command) {
          Write-Output $true
          (Disconnect-VIServer -server $vCenterAddress -Confirm:$false -Force) | Out-Null
       } catch {
-         Write-Output $false, $Error
+         Write-Output $false, "---"$Error
       }
    }
 
    "Revert" { 
       try {
-         Add-PSSnapin VMware.VimAutomation.Core
+         #Add-PSSnapin VMware.VimAutomation.Coreç
+         #Import-Module VMware.PowerCLI
          (Connect-VIServer -server $vCenterAddress -User $vSphereUsername -Password $vSpherePassword) | Out-Null
          ($vm = Get-VM -Name $vmName) | Out-Null
          ($allSnapshots = Get-Snapshot -VM $vm) | Out-Null
@@ -55,16 +57,16 @@ switch ($command) {
             (Set-VM -vm $vm -snapshot $snapshot -confirm:$false) | Out-Null
             Write-Output $true
          } else {
-            Write-Output $false, "Get-Snapshot : No snapshot named $snapshotName found"
+            Write-Output $false, "---Get-Snapshot : No snapshot named $snapshotName found"
          }
          (Disconnect-VIServer -server $vCenterAddress -Confirm:$false -Force) | Out-Null
 
       } catch {
-         Write-Output $false, $Error
+         Write-Output $false, "---"$Error
       }
    }
    
    default { 
-      Write-Output $false, "Command not recognized"
+      Write-Output $false, "---Command not recognized"
    }
 }

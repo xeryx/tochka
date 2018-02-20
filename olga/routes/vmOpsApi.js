@@ -40,7 +40,7 @@ router.route('/')
                if(result.indexOf("True") === 0) {
                   res.json({success:"True"})
                } else {
-                  res.json({success:"False", error: "Error"})
+                  res.json({success:"False", error: result.split("---")[1]})
                }},
                error =>  {res.json({success:"false", error: error.message})})
             break;
