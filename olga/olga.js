@@ -6,6 +6,7 @@ var fs = require('fs')
 
 var vmOpsApi = require('./routes/vmOpsApi');
 var fileOpsApi = require('./routes/fileOpsApi');
+var buildDirApi = require('./routes/buildDirApi');
 
 
 var app = express(); 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //Mount routers
 app.use('/', vmOpsApi);
 app.use('/upload', fileOpsApi);
+app.use('/builds', buildDirApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
