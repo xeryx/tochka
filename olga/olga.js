@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
 
 //Mount routers
-app.use('/', vmOpsApi);
+app.use('/vm', vmOpsApi);
 app.use('/upload', fileOpsApi);
 app.use('/builds', buildDirApi);
 

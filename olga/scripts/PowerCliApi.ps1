@@ -66,6 +66,19 @@ switch ($command) {
       }
    }
    
+   "PowerState" { 
+      try {
+         #Add-PSSnapin VMware.VimAutomation.Coreç
+         #Import-Module VMware.PowerCLI
+         (Connect-VIServer -server $vCenterAddress -User $vSphereUsername -Password $vSpherePassword) | Out-Null
+         ($vm = Get-VM -Name $vmName) | Out-Null
+         Write-Output $true, "---"$vm.PowerState
+         (Disconnect-VIServer -server $vCenterAddress -Confirm:$false -Force) | Out-Null
+      } catch {
+         Write-Output $false, "---"$Error
+      }
+   }
+
    default { 
       Write-Output $false, "---Command not recognized"
    }

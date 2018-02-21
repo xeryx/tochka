@@ -23,7 +23,7 @@ router.route('/')
                if(result.indexOf("True") === 0) {
                   res.json({success:"True"})
                } else {
-                  res.json({success:"False", error: result})
+                  res.json({success:"False", error: result.split("---")[1]})
                }},
                error =>  {res.json({success:"false", error: error.message})})
             break;
@@ -45,6 +45,22 @@ router.route('/')
                error =>  {res.json({success:"false", error: error.message})})
             break;
             
+         case "powerstate":
+            host = req.body.host;
+            vm = req.body.vm;
+            user = req.body.user;
+            passwd = req.body.passwd;
+
+            PowerCliCall("PowerState", [host, vm, user ,passwd])
+            .then(result => {
+               if(result.indexOf("True") === 0) {
+                  res.json({success:"True", power:(result.split("---")[1]).trim()})
+               } else {
+                  res.json({success:"False", error: result.split("---")[1]})
+               }},
+               error =>  {res.json({success:"false", error: error.message})})
+            break;
+
          default:
             res.json({success:"false", error:"Unknown operation"})
             break;
