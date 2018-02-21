@@ -5,7 +5,7 @@ var _colorManipulator = require('material-ui/utils/colorManipulator');
 
 const muiTheme = {
   palette: {
-    primary1Color: '#0f4d2e',
+    primary1Color: '#156a40',
     primary2Color: _colors.cyan700,
     primary3Color: _colors.grey600,
     accent1Color: _colors.greenA200,
@@ -18,7 +18,7 @@ const muiTheme = {
     alternateTextColor: '#abb3af',
     canvasColor: '#303030',
     borderColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.3),
-    disabledColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.3),
+    disabledColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.25),
     pickerHeaderColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.12),
     clockCircleColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.12)
   
