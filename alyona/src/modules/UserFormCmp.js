@@ -1,8 +1,5 @@
 
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
 
 class UserFormCmp extends Component {
 
@@ -15,90 +12,60 @@ class UserFormCmp extends Component {
 
       
       for (let i = 0; i < this.props.domainList.length; i++ ) {
-         domainItems.push(<MenuItem value={i} primaryText={this.props.domainList[i]} key={i} />);
+         domainItems.push(<option value={this.props.domainList[i]} key={i}>{this.props.domainList[i]}</option>);
       }
 
       for (let i = 0; i < this.props.definitionList.length; i++ ) {
-         definitionItems.push(<MenuItem value={i} primaryText={this.props.definitionList[i]} key={i} />);
+         definitionItems.push(<option value={this.props.definitionList[i]} key={i}>{this.props.definitionList[i]}</option>);
       }
 
       for (let i = 0; i < this.props.buildList.length; i++ ) {
-         buildItems.push(<MenuItem value={i} primaryText={this.props.buildList[i]} key={i} />);
+         buildItems.push(<option value={this.props.buildList[i]} key={i}>{this.props.buildList[i]}</option>);
       }
 
 
       let componentContent = <div>
-         <TextField 
-            hintText="askaqa01"
-            floatingLabelText="Server Name"
-            floatingLabelFixed={true}
-            style={{fontSize:"1em"}}
-            floatingLabelStyle={{fontSize:"1em"}}
-         >
-         </TextField>
+
+         <form>
+         Server Name:<br/>
+         <input type="text" name="server"/>
          <br/>
          <br/>
-         <DropDownMenu 
-            value={this.props.domainIndex} 
-            onChange={this.handleChange}
-            autoWidth={true}
-         >
-            {domainItems}
-        </DropDownMenu>
+         Domain:<br/>
+         <select>
+         {domainItems}
+         </select>
          <br/>
          <br/>
-         <TextField 
-            hintText="askarsna01"
-            floatingLabelText="MDS servers name:"
-            floatingLabelFixed={true}
-            style={{fontSize:"1em"}}
-            floatingLabelStyle={{fontSize:"1em"}}
-         />
+         MDS server name:<br/>
+         <input type="text" name="mdsserver"/>
          <br/>
          <br/>
-         <DropDownMenu 
-            value={this.props.definitionIndex} 
-            onChange={this.handleChange}
-            autoWidth={true}
-         >
-            {definitionItems}
-         </DropDownMenu>
+         Build:<br/>
+         <select>
+         {definitionItems}
+         </select>
+         <br/>
+         <select>
+         {buildItems}
+         </select>
          <br/>
          <br/>
-         <DropDownMenu 
-            value={this.props.buildIndex} 
-            onChange={this.handleChange}
-            autoWidth={true}
-         >
-            {buildItems}
-        </DropDownMenu>                 
-        <br/>
-        <br/>
-         <TextField 
-            hintText="fmsuz\user"
-            floatingLabelText="vSphere user name:"
-            floatingLabelFixed={true}
-            style={{fontSize:"1em"}}
-            floatingLabelStyle={{fontSize:"1em"}}
-         />
+         vSphere user name:<br/>
+         <input type="text" name="user"/>
          <br/>
          <br/>
-         <TextField 
-            floatingLabelText="vSphere password:"
-            floatingLabelFixed={true}
-            type="password"
-            style={{fontSize:"1em"}}
-            floatingLabelStyle={{fontSize:"1em"}}
-         />
+         vSphere password:<br/>
+         <input type="text" name="passwd"/>
          <br/>
          <br/>
-         <TextField 
-            hintText="vecnter-mv2.fmsuz.com"
-            floatingLabelText="Host address:"
-            floatingLabelFixed={true}
-            style={{fontSize:"1em"}}
-            floatingLabelStyle={{fontSize:"1em"}}
-         />         
+         Host address:<br/>
+         <input type="text" name="host"/>
+         <br/>
+         <br/>                  
+
+         </form>
+  
       </div>
 
        return(componentContent)
