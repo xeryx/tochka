@@ -12,6 +12,7 @@ var server = require('http').Server(app);
 
 var powershell = require('./routes/powershell');
 var fileops = require('./routes/fileops');
+var codeupload = require('./routes/codeupload');
 var home = require('./routes/home');
 
 //Socket.io code 
@@ -35,6 +36,7 @@ app.use(bodyParser.json());
 //Mount routers
 app.use('/powershell/', powershell);
 app.use('/upload/', fileops);
+app.use('/code/', codeupload);
 app.use('/', home);
 
 // catch 404 and forward to error handler
